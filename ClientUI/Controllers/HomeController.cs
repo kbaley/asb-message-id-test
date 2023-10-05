@@ -38,7 +38,9 @@ namespace ClientUI.Controllers
             // Send the command
             var options = new SendOptions();
             options.SetMessageId("moo");
-            options.SetDestination("Sales");
+            // options.CustomizeNativeMessage(c => c.MessageId = "moo");
+            // options.SetDestination("ClientUI");
+            options.RouteToThisEndpoint();
             await _messageSession.Send(command, options)
                 .ConfigureAwait(false);
 
